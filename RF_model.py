@@ -1,12 +1,3 @@
-# %%%%%%%%%%%%% Machine Learning %%%%%%%%%%%%%%%%%%%%%%%%
-# %%%%%%%%%%%%% Authors  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-# Dr. Amir Jafari------>Email: amir.h.jafari@okstate.edu
-# Deepak Agarwal------>Email:deepakagarwal@gwmail.gwu.edu
-# %%%%%%%%%%%%% Date:
-# V1 June - 05 - 2018
-# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-# %%%%%%%%%%%%% Random Forest  %%%%%%%%%%%%%%%%%%%%%%%%%%
-#%%-----------------------------------------------------------------------
 # Importing the required packages
 import pandas as pd
 import matplotlib.pyplot as plt
