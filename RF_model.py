@@ -45,7 +45,7 @@ X = data.values[:, :-1]
 Y = data.values[:, -1]
 
 # split the dataset into train and test
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=100)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=1996)
 #%%-----------------------------------------------------------------------
 #perform training with random forest with all columns
 # specify random forest classifier
