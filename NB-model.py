@@ -55,7 +55,7 @@ distribution(0)
 #------------------------------MultinomialNB---------------------------------
 #-----------------------------data processing--------------------------------
 
-#switch the dicrete variables to continuous variables and non-negtitive datas
+#switch the continuous variables to discrete variables and non-negtitive datas
 for j in range(5, 11):
     d.iloc[:,j] = pd.cut(d.iloc[:, j],11 ,labels=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     d.iloc[:, j] = d.iloc[:, j].astype('float64')
