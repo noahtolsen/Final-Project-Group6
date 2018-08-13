@@ -3,7 +3,7 @@
 Welcome to our final group project with group members Jianing Wang, Jia Chen, and Noah Olsen.
 
 ## Repository Setup
-In this repository you will find 4 folders. Group-Proposal contains only our group proposal. Final-Group-Project-Report contains only our final project report.  Our code folder is a little more complicated and is described below
+In this repository you will find 4 folders. Group-Proposal contains only our group proposal. Final-Group-Project-Report contains only our final project report.  Final-Group-Presentation contains only our final project report. Our code folder is a little more complicated and is described below
 
 ### Code Folder Setup
 * NB-model.py contains the Naive Bayes model that was performed by Jianing Wang
