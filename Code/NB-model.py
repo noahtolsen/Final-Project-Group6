@@ -127,7 +127,7 @@ print("\n")
 
 #show confusion matrix
 conf_matrix = confusion_matrix(y_test, y_pred)
-class_names = d['default payment next month'].unique()
+class_names = class_names = ['0','1']
 
 df_cm = pd.DataFrame(conf_matrix, index=class_names, columns=class_names )
 
@@ -185,7 +185,7 @@ print("\n")
 
 #show confusion matrix of Gaussian
 conf_matrix = confusion_matrix(y_test, y_pred)
-class_names = d['default payment next month'].unique()
+class_names = class_names = ['0','1']
 
 df_cm = pd.DataFrame(conf_matrix, index=class_names, columns=class_names )
 
