@@ -3,12 +3,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.preprocessing import normalize
 
 data = pd.read_csv('cc_default_data.csv', sep=',', header=0)
 X = data.values[:, :-1]
 Y = data.values[:, -1]
 
-
+X = normalize(X)
 # printing the summary statistics of the dataset
 print(data.describe(include='all'))
 
