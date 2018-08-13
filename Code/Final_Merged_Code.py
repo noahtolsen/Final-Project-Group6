@@ -209,9 +209,6 @@ plt.show()
 
 # ---------------------------- SVM --------------------------------------
 # The Support Vector Machine was performed by Jia Chen
-
-
-
 # Importing the required packages
 import numpy as np
 import pandas as pd
@@ -232,10 +229,9 @@ warnings.filterwarnings("ignore")
 # %%-----------------------------------------------------------------------
 # importing Data
 # read data as pandas dataframe
-data = pd.read_csv("cc_default_data.csv")
-# define column names
+data = pd.read_csv("cc_default_data_SVM.csv")
 
-print(data.head())
+# define column names
 data.columns = ['ID', 'LimitBalance', 'Sex', 'Education', 'MaritalStatus', 'Age', 'Repayment_Sept',
                 'Repayment_Aug', 'Repayment_July', 'Repayment_June', 'Repayment_May', 'Repayment_Apr',
                 'BillAmt_Sept', 'BillAmt_Aug', 'BillAmt_July', 'BillAmt_June','BillAmtMay', 'BillAmt_Apr',
@@ -255,7 +251,7 @@ print(data.head())
 
 
 # replace missing characters as NaN
-data.replace('?', np.NaN, inplace=True)
+data = data.replace('?', np.NaN, inplace=False)
 # check the structure of data
 data.info()
 # check the null values in each column
@@ -264,41 +260,36 @@ print(data.isnull().sum())
 data.describe(include='all')
 
 
-# normalize continuous columns using such as LimitBalance, BillAmount and PaymentAmount
+# normalize continuous columns such as LimitBalance, BillAmount and PaymentAmount
 X_Part1 = data.values[:, :1]
 X_Part2 = data.values[:, 11:23]
 X_Part5 = data.values[:, 4:5]
-max_abs_data = preprocessing.MaxAbsScaler()
+min_max_data = preprocessing.MinMaxScaler()
 
 # transfer them into dataframe to merge with other parts
-X_Part1_maxabs = DataFrame(max_abs_data.fit_transform(X_Part1))
-X_Part2_maxabs = DataFrame(max_abs_data.fit_transform(X_Part2))
-X_Part5_maxabs = DataFrame(max_abs_data.fit_transform(X_Part5))
+X_Part1_minmax = DataFrame(min_max_data.fit_transform(X_Part1))
+X_Part2_minmax = DataFrame(min_max_data.fit_transform(X_Part2))
+X_Part5_minmax = DataFrame(min_max_data.fit_transform(X_Part5))
 
 # adjust index to be consistent with get_dummies dataframe below
-X_Part1_maxabs.index = range(1, len(X_Part1_maxabs)+1)
-X_Part2_maxabs.index = range(1, len(X_Part2_maxabs)+1)
-X_Part5_maxabs.index = range(1, len(X_Part5_maxabs)+1)
+X_Part1_minmax.index = range(1, len(X_Part1_minmax)+1)
+X_Part2_minmax.index = range(1, len(X_Part2_minmax)+1)
+X_Part5_minmax.index = range(1, len(X_Part5_minmax)+1)
 
 # some features keep unchanging
-X_Part4 = DataFrame(data.values[:, 5:11])
-X_Part4.index = range(1, len(X_Part4)+1)
+# X_Part4 = DataFrame(data.values[:, 5:11])
+
+# X_Part4.index = range(1, len(X_Part4)+1)
 
 # %%-----------------------------------------------------------------------
 # One Hot Encoding the variables
 
 # encoding categorical features such as gender, education, and marriage status using get dummies
 X_Part3 = pd.get_dummies(data.iloc[:, 1:4])
+X_Part4 = pd.get_dummies(data.iloc[:, 5:11])
 
 # merge all the parts above
-X_Entire = pd.concat([X_Part1_maxabs, X_Part2_maxabs, X_Part3, X_Part4, X_Part5_maxabs], axis=1)
-
-X_Entire.columns = ['LimitBalance', 'BillAmt_Sept', 'BillAmt_Aug', 'BillAmt_July', 'BillAmt_June',
-                    'BillAmt_May', 'BillAmt_Apr', 'PaymentAmt_Sept', 'PaymentAmt_Aug','PaymentAmt_July',
-                    'PaymentAmt_June', 'PaymentAmt_May','PaymentAmt_Apr', 'Sex_1','Sex_2', 'Education_0',
-                    'Education_1','Education_2', 'Education_3', 'Education_4', 'Education_5', 'Education_6',
-                    'MaritalStatus_0', 'MaritalStatus_1', 'MaritalStatus_2', 'MaritalStatus_3', 'Repayment_Sept',
-                    'Repayment_Aug', 'Repayment_July', 'Repayment_June', 'Repayment_May','Repayment_Apr', 'Age']
+X_Entire = pd.concat([X_Part1_minmax, X_Part2_minmax, X_Part3, X_Part4, X_Part5_minmax], axis=1)
 
 X_data = X_Entire.values
 X = X_data[:, :]
@@ -376,7 +367,9 @@ coef_values(clf.coef_, features_names)
 
 # confusion matrix
 conf_matrix = confusion_matrix(y_test, y_predict)
-class_names = class_names = ['0','1']
+# class_names = data['default payment next month'].unique()
+class_names = class_names = ['0', '1']
+
 
 df_cm = pd.DataFrame(conf_matrix, index=class_names, columns=class_names )
 plt.figure(figsize=(5, 5))
@@ -412,7 +405,6 @@ plt.ylabel('True Positive Rate')
 plt.title('Receiver operating characteristic example')
 plt.legend(loc="lower right")
 plt.show()
-
 
 
 # ---------------------------- Neural Network --------------------------------------
