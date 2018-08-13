@@ -1,4 +1,4 @@
-# Project-Group12
+# Project-Group6
 
 Welcome to our final group project with group members Jianing Wang, Jia Chen, and Noah Olsen.
 
