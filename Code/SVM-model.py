@@ -20,9 +20,8 @@ warnings.filterwarnings("ignore")
 # importing Data
 # read data as pandas dataframe
 data = pd.read_csv("cc_default_data_SVM.csv")
-# define column names
 
-print(data.head())
+# define column names
 data.columns = ['ID', 'LimitBalance', 'Sex', 'Education', 'MaritalStatus', 'Age', 'Repayment_Sept',
                 'Repayment_Aug', 'Repayment_July', 'Repayment_June', 'Repayment_May', 'Repayment_Apr',
                 'BillAmt_Sept', 'BillAmt_Aug', 'BillAmt_July', 'BillAmt_June','BillAmtMay', 'BillAmt_Apr',
@@ -31,7 +30,6 @@ data.columns = ['ID', 'LimitBalance', 'Sex', 'Education', 'MaritalStatus', 'Age'
 
 # %%-----------------------------------------------------------------------
 # Data pre-processing
-
 
 # drop unnecessary rows and columns
 data.drop([0], inplace=True)
