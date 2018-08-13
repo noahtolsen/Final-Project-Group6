@@ -127,7 +127,7 @@ print("ROC_AUC : ", roc_auc_score(y_test,y_pred_k_features_score[:,1]) * 100)
 # %%-----------------------------------------------------------------------
 # confusion matrix for gini model
 conf_matrix = confusion_matrix(y_test, y_pred)
-class_names = data['default payment next month'].unique()
+class_names = class_names = ['0','1']
 
 
 df_cm = pd.DataFrame(conf_matrix, index=class_names, columns=class_names )
@@ -149,7 +149,7 @@ plt.tight_layout()
 # confusion matrix for entropy model
 
 conf_matrix = confusion_matrix(y_test, y_pred_k_features)
-class_names = data['default payment next month'].unique()
+class_names = class_names = ['0','1']
 
 
 df_cm = pd.DataFrame(conf_matrix, index=class_names, columns=class_names )
