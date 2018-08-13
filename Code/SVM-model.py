@@ -65,10 +65,6 @@ X_Part1_minmax.index = range(1, len(X_Part1_minmax)+1)
 X_Part2_minmax.index = range(1, len(X_Part2_minmax)+1)
 X_Part5_minmax.index = range(1, len(X_Part5_minmax)+1)
 
-# some features keep unchanging
-# X_Part4 = DataFrame(data.values[:, 5:11])
-
-# X_Part4.index = range(1, len(X_Part4)+1)
 
 # %%-----------------------------------------------------------------------
 # One Hot Encoding the variables
